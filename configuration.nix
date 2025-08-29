@@ -24,6 +24,11 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  networking.enableIPv6 = false;
+
+  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
