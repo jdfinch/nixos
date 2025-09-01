@@ -1,0 +1,21 @@
+default xkb_types "complete" {
+    include "basic"
+    include "mousekeys"
+    include "pc"
+    include "iso9995"
+    include "level5"
+    include "extra"
+    include "numpad"
+    
+    type "CUST_CAPSLOCK" {
+       modifiers= Shift+Lock; 
+       map[Shift] = Level2;            
+       map[Lock] = Level3;
+       map[Shift+Lock] = Level4; 
+       level_name[Level1]= "Base";
+       level_name[Level2]= "Shift";
+       level_name[Level3]= "Lock";
+       level_name[Level4]= "Shiftlock";
+   };
+   
+};

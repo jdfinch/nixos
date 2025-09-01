@@ -1,0 +1,145 @@
+default	partial alphanumeric_keys
+xkb_symbols "basic" {
+
+	include "us(basic)"
+	name[Group1]= "English (coder)";
+	
+
+	key <AC06> {
+		type= "CUST_CAPSLOCK",	
+		symbols[Group1]= [h, H, BackSpace, Tab],
+		actions[Group1]= [NoAction(), NoAction(),
+		RedirectKey(keycode=<BKSP>, clearmods=Control+Lock),
+		RedirectKey(keycode=<TAB>, clearmods=Control+Lock)]
+	};
+	key <AC07> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [j, J, Left, Left],
+		actions[Group1]= [NoAction(), NoAction(),   
+		RedirectKey(keycode=<LEFT>, clearmods=Lock),
+		RedirectKey(keycode=<LEFT>, clearmods=Lock) ]
+	};
+	key <AC08> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [k, K, Down, Down],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<DOWN>, clearmods=Control+Lock),
+		RedirectKey(keycode=<DOWN>, clearmods=Control+Lock) ]
+	};
+	key <AC09> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [l, L, Right, Right],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<RGHT>, clearmods=Lock),
+		RedirectKey(keycode=<RGHT>, clearmods=Lock) ]
+	};
+	key <AC10> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [semicolon, colon, z, z],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<AB01>, clearmods=Lock),
+		RedirectKey(keycode=<AB01>, clearmods=Lock) ]
+	};
+	key <AC11> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [apostrophe, quotedbl, Tab, c],
+		actions[Group1]= [NoAction(), NoAction(),   
+		RedirectKey(keycode=<TAB>, clearmods=Control+Lock),
+		RedirectKey(keycode=<AB03>, clearmods=Shift+Lock)]
+	};
+
+	
+	key <AD06> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [y, Y, escape, escape],
+		actions[Group1]= [NoAction(), NoAction(), 
+		RedirectKey(keycode=<ESC>, clearmods=Control+Lock),
+		RedirectKey(keycode=<ESC>, clearmods=Control+Shift+Lock) ]
+	}; 
+	key <AD07> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [u, U, Home, Home],
+		actions[Group1]= [NoAction(), NoAction(),   			
+		RedirectKey(keycode=<HOME>, clearmods=Control+Lock),
+		RedirectKey(keycode=<HOME>, clearmods=Control+Lock) ]
+	};
+	key <AD08> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [i, I, Up, Up],
+		actions[Group1]= [NoAction(), NoAction(), 
+		RedirectKey(keycode=<UP>, clearmods=Control+Lock),
+		RedirectKey(keycode=<UP>, clearmods=Control+Lock) ]
+	};
+	key <AD09> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [o, O, End, End],
+		actions[Group1]= [NoAction(), NoAction(),   
+		RedirectKey(keycode=<END>, clearmods=Control+Lock),
+		RedirectKey(keycode=<END>, clearmods=Control+Lock) ]
+	};	
+	key <AD10> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [p, P, v, v],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<AB04>, clearmods=Lock),
+		RedirectKey(keycode=<AB04>, clearmods=Lock) ]
+	};   
+	
+	
+	
+    key <AB06> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [n, N, Left, Left],
+		actions[Group1]= [NoAction(), NoAction(),   
+		RedirectKey(keycode=<LEFT>, clearmods=Control+Lock),
+		RedirectKey(keycode=<LEFT>, clearmods=Control+Lock) ]
+	};	
+	key <AB07> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [m, M, Return, Tab],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<RTRN>, clearmods=Control+Lock),
+		RedirectKey(keycode=<TAB>, clearmods=Control+Shift+Lock)]
+	};
+    key <AB08> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [comma, less, Return, Return],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<RTRN>, clearmods=Control+Lock),
+		RedirectKey(keycode=<RTRN>, clearmods=Control+Shift+Lock) ]
+	};	
+    key <AB09> {	
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [period, greater, Right, Right],
+		actions[Group1]= [NoAction(), NoAction(),  
+		RedirectKey(keycode=<RGHT>, clearmods=Control+Lock),
+		RedirectKey(keycode=<RGHT>, clearmods=Control+Lock) ]
+	};
+	key <AB10> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [slash, question, c, x],
+		actions[Group1]= [NoAction(), NoAction(),
+		RedirectKey(keycode=<AB02>, clearmods=Lock),
+		RedirectKey(keycode=<AB03>, clearmods=Shift+Lock) ]
+	};
+     
+	
+    
+    key <SPCE> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [space, underscore, Shift_L, Shift_L]
+	};         
+	
+	key <RTRN> {
+		type= "CUST_CAPSLOCK",
+		symbols[Group1]= [Return, Return, BackSpace, escape],
+		actions[Group1]= [NoAction(), NoAction(),
+		RedirectKey(keycode=<BKSP>, clearmods=Control+Lock),
+		RedirectKey(keycode=<ESC>, clearmods=Control+Shift+Lock)]
+	};
+	
+
+};    
+
+
+

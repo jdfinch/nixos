@@ -6,9 +6,10 @@
 
     ../../modules/system.nix
     ../../modules/packages.nix
-    ../../modules/gui.nix
+    ../../modules/hyprland.nix
     ../../modules/users.nix
     ../../modules/cuda.nix
+    ../../modules/keyboard.nix
   ];
   
   networking.hostName = "raider";
