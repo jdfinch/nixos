@@ -137,6 +137,9 @@ xkb_symbols "basic" {
 		RedirectKey(keycode=<BKSP>, clearmods=Control+Lock),
 		RedirectKey(keycode=<ESC>, clearmods=Control+Shift+Lock)]
 	};
+
+	key <CAPS> { [ ISO_Level3_Shift ] };
+
 	
 
 };    

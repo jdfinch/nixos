@@ -25,11 +25,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Keyboard
+  # Keyboard (default, overriden by coder in keyboard.nix)
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout  = lib.mkDefault "us";
+    variant = lib.mkDefault "";
   };
+
 
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
