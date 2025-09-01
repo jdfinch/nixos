@@ -121,6 +121,7 @@
     zsh    
     xorg.xkbcomp
     xkeyboard_config
+    vscode
   ];
 
   environment.sessionVariables = {
