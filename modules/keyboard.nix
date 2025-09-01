@@ -22,7 +22,20 @@
     };
   };
 
+  # group that keyd wants to drop to
   users.groups.keyd = {};
+
+  # uinput for the virtual keyboard
+  hardware.uinput.enable = true;
+
+  # relax hardening so keyd can setgid to the 'keyd' group
+  systemd.services.keyd.serviceConfig = {
+    RestrictSUIDSGID = lib.mkForce false;
+    NoNewPrivileges  = lib.mkForce false;
+    User  = "root";
+    Group = "root";
+    SupplementaryGroups = [ "input" "uinput" "keyd" ];
+  };
 
 }
 
