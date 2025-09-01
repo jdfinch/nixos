@@ -9,6 +9,7 @@
     ../../modules/packages.nix
     ../../modules/gui.nix
     ../../modules/users.nix
+    ../../modules/cuda.nix
   ];
 
   # host-specific bits
