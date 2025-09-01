@@ -12,6 +12,9 @@
     ../../modules/cuda.nix
   ];
 
+  my.cuda.enable = true;
+  my.cuda.toolkitVersion = "12.8";
+
   # host-specific bits
   networking.hostName = "raider";
 
