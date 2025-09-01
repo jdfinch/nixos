@@ -1,6 +1,8 @@
 # modules/system.nix
 { config, pkgs, lib, ... }:
 {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Networking + DNS
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
