@@ -24,6 +24,5 @@
 
   users.groups.keyd = {};
 
-  environment.etc."keyd/coder.conf".source = ./keyboard/coder.conf;
 }
 
