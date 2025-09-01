@@ -7,7 +7,7 @@
     firefox
     python313 gcc 
     ffmpeg
-    zsh git wget curl jq which 
+    zsh git wget curl jq which zip unzip
     xorg.xkbcomp xkeyboard_config
     vscode
   ];

@@ -9,7 +9,12 @@
     nixosConfigurations = {
       raider = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./hosts/raider/configuration.nix ];
+        modules = [
+          ./hosts/raider/configuration.nix
+          ({ ... }: {
+            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          })
+        ];
       };
     };
   };
