@@ -26,8 +26,8 @@
           k = "down";
           i = "up";
 
-          leftbracket = "pageup";
-          rightbracket = "pagedown";
+          leftbrace = "pageup";
+          rightbrace = "pagedown";
 
           n = "enter";
           y = "esc";
