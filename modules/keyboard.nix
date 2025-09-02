@@ -30,12 +30,12 @@
           n = "enter";
           y = "esc";
           b = "backspace";
+          apostrophe = "tab";
 
           dot = "C-c";   # copy
           slash = "C-x"; # cut
           p = "C-v";   # paste
-
-          apostrophe = "tab";
+          comma = "C-z"; # undo 
 
           space = "leftshift";
           
