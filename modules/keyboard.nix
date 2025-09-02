@@ -21,6 +21,9 @@
           j = "C-left";   # left word
           l = "C-right";  # right word
 
+          o = "end";
+          u = "home";
+
           k = "down";
           i = "up";
 
