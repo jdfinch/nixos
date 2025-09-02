@@ -31,8 +31,10 @@
           y = "esc";
           h = "backspace";
 
-          slash = "C-c";   # copy
+          slash = "C-x";   # cut
           p = "C-v";   # paste
+
+          space = "leftshift";
           
         };
       };
