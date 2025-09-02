@@ -12,7 +12,6 @@
         main.capslock = "layer(nav)";
 
         # --- Define the nav layer ---
-        # Vim-style arrows on HJKL, plus common nav keys
         nav = {
 
           h = "left";
@@ -26,6 +25,9 @@
 
           k = "down";
           i = "up";
+
+          leftbracket = "pageup";
+          rightbracket = "pagedown";
 
           n = "enter";
           y = "esc";
