@@ -16,7 +16,7 @@
         nav = {
 
           n = "left";
-          . = "right";
+          dot = "right";
 
           j = "C-left";   # left word
           l = "C-right";  # right word
@@ -28,7 +28,7 @@
           y = "esc";
           h = "backspace";
 
-          / = "C-c";   # copy
+          slash = "C-c";   # copy
           p = "C-v";   # paste
           
         };
