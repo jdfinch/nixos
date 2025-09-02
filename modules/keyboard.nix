@@ -14,29 +14,23 @@
         # --- Define the nav layer ---
         # Vim-style arrows on HJKL, plus common nav keys
         nav = {
-          h = "left";
-          j = "down";
-          k = "up";
-          l = "right";
 
-          u = "home";
-          o = "end";
-          y = "pageup";
-          i = "pagedown";
+          n = "left";
+          . = "right";
 
-          # Word-wise movement while in nav:
-          b = "C-left";     # back a word
-          n = "C-right";    # forward a word
+          j = "C-left";   # left word
+          l = "C-right";  # right word
 
-          # Editing helpers:
-          d = "delete";
-          x = "backspace";
+          k = "down";
+          i = "up";
 
-          # Selection helpers (shifted arrows):
-          H = "S-left";
-          J = "S-down";
-          K = "S-up";
-          L = "S-right";
+          m = "enter";
+          y = "esc";
+          h = "backspace";
+
+          / = "C-c";   # copy
+          p = "C-v";   # paste
+          
         };
       };
     };
