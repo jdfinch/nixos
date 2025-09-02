@@ -15,8 +15,8 @@
         # Vim-style arrows on HJKL, plus common nav keys
         nav = {
 
-          n = "left";
-          dot = "right";
+          h = "left";
+          semicolon = "right";
 
           j = "C-left";   # left word
           l = "C-right";  # right word
@@ -27,14 +27,15 @@
           k = "down";
           i = "up";
 
-          m = "enter";
+          n = "enter";
           y = "esc";
-          h = "backspace";
+          b = "backspace";
 
-          slash = "C-x";   # cut
+          dot = "C-c";   # copy
+          slash = "C-x"; # cut
           p = "C-v";   # paste
 
-          semicolon = "tab";
+          apostrophe = "tab";
 
           space = "leftshift";
           
