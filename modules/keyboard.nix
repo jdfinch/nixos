@@ -34,6 +34,8 @@
           slash = "C-x";   # cut
           p = "C-v";   # paste
 
+          semicolon = "tab";
+
           space = "leftshift";
           
         };
