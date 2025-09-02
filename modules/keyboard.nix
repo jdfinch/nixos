@@ -1,24 +1,45 @@
 { config, pkgs, ... }:
 
 {
-  # Install (optional; the service brings its own package, but this gives you the CLI too)
-  environment.systemPackages = with pkgs; [ keyd ];
-
   services.keyd = {
     enable = true;
 
-    # Start with a conservative, easy-to-undo mapping:
     keyboards.default = {
-      # Apply to all keyboards for now (see step 2 to target a single device)
-      ids = [ "*" ];
+      ids = [ "*" ];  # or your specific VID:PID if you scoped earlier
 
-      # Simple, proven remaps
-      settings.main = {
-        # Tap Esc, hold Control — super common and low risk
-        capslock = "overload(control, esc)";
-        # Make sure Esc still exists somewhere if you change Caps later
-        # leftalt = "leftmeta";  # uncomment if you want Alt↔Super swap
+      settings = {
+        # Hold Caps = enter the "nav" layer
+        main.capslock = "layer(nav)";
+
+        # --- Define the nav layer ---
+        # Vim-style arrows on HJKL, plus common nav keys
+        nav = {
+          h = "left";
+          j = "down";
+          k = "up";
+          l = "right";
+
+          u = "home";
+          o = "end";
+          y = "pageup";
+          i = "pagedown";
+
+          # Word-wise movement while in nav:
+          b = "C-left";     # back a word
+          n = "C-right";    # forward a word
+
+          # Editing helpers:
+          d = "delete";
+          x = "backspace";
+
+          # Selection helpers (shifted arrows):
+          H = "S-left";
+          J = "S-down";
+          K = "S-up";
+          L = "S-right";
+        };
       };
     };
   };
 }
+
