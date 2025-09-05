@@ -40,4 +40,7 @@
 
   # Firewall
   networking.firewall.enable = true;
+
+  # Direnv
+  programs.direnv.enable = true;
 }
