@@ -8,7 +8,10 @@
     python313 gcc 
     ffmpeg
     zsh git wget curl jq which zip unzip
+    direnv
     keyd xorg.xkbcomp xkeyboard_config xorg.setxkbmap
     vscode
   ];
+
+  programs.direnv.enable = true;
 }
