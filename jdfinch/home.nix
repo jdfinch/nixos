@@ -4,7 +4,7 @@ let
   homeDir = ./home;
 in
 {
-  programsn.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
   # Pull in feature modules
   imports = [

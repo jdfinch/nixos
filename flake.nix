@@ -26,9 +26,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jdfinch = import ./jdfinch/home.nix;
-
-            # Optional: install the `home-manager` CLI for your user
-            programs.home-manager.enable = true;
           })
         ];
       };
