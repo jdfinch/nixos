@@ -1,9 +1,14 @@
 {
   description = "My NixOS configs.";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  outputs = { self, nixpkgs }: let
+  outputs = { self, nixpkgs, home-manager }:
+  let
     system = "x86_64-linux";
   in {
     nixosConfigurations = {
@@ -11,8 +16,19 @@
         inherit system;
         modules = [
           ./hosts/raider/configuration.nix
+
+          # 1) Flakes on
+          ({ ... }: { nix.settings.experimental-features = [ "nix-command" "flakes" ]; })
+
+          # 2) Home Manager on (for this system), and your user config
+          home-manager.nixosModules.home-manager
           ({ ... }: {
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jdfinch = import ./jdfinch/home.nix;
+
+            # Optional: install the `home-manager` CLI for your user
+            programs.home-manager.enable = true;
           })
         ];
       };
