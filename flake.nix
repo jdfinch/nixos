@@ -25,7 +25,9 @@
           ({ ... }: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak-hm";
             home-manager.users.jdfinch = import ./jdfinch/home.nix;
+            
           })
         ];
       };

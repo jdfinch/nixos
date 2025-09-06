@@ -5,8 +5,6 @@ let
 in
 {
   programs.home-manager.enable = true;
-  # Auto-backup any existing files in ~ that would be replaced by HM
-  home-manager.backupFileExtension = "bak-hm";
 
   # Pull in feature modules
   imports = [
