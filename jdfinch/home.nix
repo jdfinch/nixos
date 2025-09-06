@@ -6,23 +6,21 @@ in
 {
   programs.home-manager.enable = true;
 
-  # Pull in feature modules
   imports = [
     ./modules/zsh/zsh.nix
     ./modules/vscode/vscode.nix
   ];
 
-  home.username = "jdfinch";
-  home.homeDirectory = "/home/jdfinch";
-  home.stateVersion = "25.05";
+  home = {
+    username = "jdfinch";
+    homeDirectory = "/home/jdfinch";
+    stateVersion = "25.05";
 
-  # Mirror everything from jdfinch/home/ into $HOME
-  home.file."." = {
-    source = homeDir;
-    recursive = true;
+    # Mirror everything from jdfinch/home/ into $HOME
+    file."." = {
+      source = homeDir;
+      recursive = true;
+      force = true;  # optional but handy if files already exist
+    };
   };
-
-  home.activation.ensureConfigDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "$HOME/.config"
-  '';
 }
