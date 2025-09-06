@@ -8,7 +8,7 @@ in
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
-    extensions = extList;
+    profiles.default.extensions = extList;
   };
 
   # Symlink the entire VSCode User directory from your repo
@@ -17,7 +17,4 @@ in
     recursive = true;
   };
 
-  # For VSCodium or Insiders, swap the target:
-  # xdg.configFile."VSCodium/User".source = vscodeDir;
-  # xdg.configFile."Code - Insiders/User".source = vscodeDir;
 }
