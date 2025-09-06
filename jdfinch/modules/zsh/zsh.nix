@@ -3,7 +3,8 @@
 {
   programs.zsh = {
     enable = true;
-    autosuggestions.enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
     # Keep zsh config here to avoid conflicts with a .zshrc in jdfinch/home/
