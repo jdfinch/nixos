@@ -2,6 +2,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    nixd
     foot 
     waybar wofi 
     firefox
