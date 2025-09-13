@@ -9,6 +9,8 @@
     initContent = ''
       source ${./aliases.zsh}
       source ${./prompt.zsh}
+      source ${./startup.zsh}
+
     '';
   };
 }
