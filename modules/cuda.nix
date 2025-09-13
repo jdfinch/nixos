@@ -34,7 +34,7 @@ in
   environment.variables.CUDA_PATH = toString tk;
 
   # OpenGL
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Wayland/Hyprland NVIDIA QoL tweaks
   environment.sessionVariables = {
