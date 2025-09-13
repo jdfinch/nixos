@@ -1,11 +1,8 @@
-# jdfinch/modules/vscode/vscode.nix
 { config, pkgs, lib, ... }:
 
 let
-  # 1) Pure, store-safe source to enumerate:
-  userDirStore = ./User;
+  userDirStore = ./User;  # enumerate from flake source (pure)
 
-  # 2) Build the absolute path to your working tree (no hardcoded user/home):
   repoRoot   = "${config.home.homeDirectory}/nixos";
   userRoot   = "${repoRoot}/${config.home.username}";
   userDirAbs = "${userRoot}/modules/vscode/User";
@@ -13,7 +10,6 @@ let
   oos  = config.lib.file.mkOutOfStoreSymlink;
   exts = import ./extensions.nix { inherit pkgs; };
 
-  # Recursively gather *files only* from flake source; link to working tree.
   recFiles = relDir: srcDir:
     let
       entries = builtins.readDir srcDir;
@@ -25,11 +21,11 @@ let
           srcNext = "${srcDir}/${name}";
         in
           if typ == "directory" then
-            acc // (recFiles relPath srcNext)                     # recurse; no dir links
+            acc // (recFiles relPath srcNext)   # recurse; DO NOT link dirs
           else if typ == "regular" || typ == "symlink" then
             acc // {
               "${"Code/User/${relPath}"}" = {
-                source = oos "${userDirAbs}/${relPath}";          # editable
+                source = oos "${userDirAbs}/${relPath}";
                 force  = true;
               };
             }
@@ -45,5 +41,6 @@ in
     profiles.default.extensions = exts;
   };
 
-  xdg.configFile = xdgLinks;  # creates ~/.config/Code/User/<each file>
+  # Only file links under ~/.config/Code/User/*
+  xdg.configFile = xdgLinks;
 }
