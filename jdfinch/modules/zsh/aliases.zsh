@@ -1,0 +1,1 @@
+alias renix='sudo nixos-rebuild switch --flake ~/nixos#raider'
