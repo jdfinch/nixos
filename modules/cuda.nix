@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ pkgs, config, ... }:
 
 let
   tk = pkgs.cudaPackages.cudatoolkit;  # whatever your nixpkgs pin provides

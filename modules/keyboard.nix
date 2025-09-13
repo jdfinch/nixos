@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   services.keyd = {
@@ -9,7 +9,7 @@
 
       settings = {
         # Hold Caps = enter the "nav" layer
-        main.capslock = "layer(nav)";
+        main.capslock = "layer(nav)"; 
 
         # --- Define the nav layer ---
         nav = {
