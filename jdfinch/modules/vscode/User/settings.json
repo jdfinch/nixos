@@ -33,7 +33,7 @@
         }
     },
 
-    // Make the VSCode extension format .nix with nixfmt (optional)
+    // Make the VSCode extension format .nix with nixfmt
     "[nix]": { "editor.defaultFormatter": "jnoortheen.nix-ide" }
 
 }

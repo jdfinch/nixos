@@ -1,38 +1,18 @@
 { config, pkgs, lib, ... }:
 
 let
-  userDirStore = ./User;  # enumerate from flake source (pure)
+  filesLib    = import ../../lib/link-hm-files.nix { inherit lib config; };
+  repoRoot    = "${config.home.homeDirectory}/nixos";
+  userRoot    = "${repoRoot}/${config.home.username}";
+  worktreeAbs = "${userRoot}/modules/vscode/User";
 
-  repoRoot   = "${config.home.homeDirectory}/nixos";
-  userRoot   = "${repoRoot}/${config.home.username}";
-  userDirAbs = "${userRoot}/modules/vscode/User";
+  xdgLinks = filesLib.recFilesOnlyXdg {
+    srcRel      = ./User;        # enumerate from flake source (pure)
+    destPrefix  = "Code/User";   # → ~/.config/Code/User/*
+    worktreeAbs = worktreeAbs;   # editable targets in your repo
+  };
 
-  oos  = config.lib.file.mkOutOfStoreSymlink;
   exts = import ./extensions.nix { inherit pkgs; };
-
-  recFiles = relDir: srcDir:
-    let
-      entries = builtins.readDir srcDir;
-      names   = builtins.attrNames entries;
-      step = acc: name:
-        let
-          typ     = entries.${name};
-          relPath = if relDir == "" then name else "${relDir}/${name}";
-          srcNext = "${srcDir}/${name}";
-        in
-          if typ == "directory" then
-            acc // (recFiles relPath srcNext)   # recurse; DO NOT link dirs
-          else if typ == "regular" || typ == "symlink" then
-            acc // {
-              "${"Code/User/${relPath}"}" = {
-                source = oos "${userDirAbs}/${relPath}";
-                force  = true;
-              };
-            }
-          else acc;
-    in lib.foldl' step {} names;
-
-  xdgLinks = recFiles "" userDirStore;
 in
 {
   programs.vscode = {
@@ -41,6 +21,6 @@ in
     profiles.default.extensions = exts;
   };
 
-  # Only file links under ~/.config/Code/User/*
+  # Files-only links
   xdg.configFile = xdgLinks;
 }
