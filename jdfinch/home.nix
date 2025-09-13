@@ -17,6 +17,7 @@ in
   imports = [
     ./modules/zsh/zsh.nix
     ./modules/vscode/vscode.nix
+    ./modules/hyprland/hyprland.nix
   ];
 
   home = {

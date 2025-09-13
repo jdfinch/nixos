@@ -33,6 +33,9 @@ in
   # Helpful env
   environment.variables.CUDA_PATH = toString tk;
 
+  # OpenGL
+  hardware.opengl.enable = true;
+
   # Wayland/Hyprland NVIDIA QoL tweaks
   environment.sessionVariables = {
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
