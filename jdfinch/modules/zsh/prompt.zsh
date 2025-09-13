@@ -23,6 +23,6 @@ precmd() {
   local sym="⮞"   # fancy prompt glyph; alternatives: ➜  ❱  ⮞
 
   # dim/quiet cwd, then space + bold white symbol
-  PROMPT="%F{240}$(_fixed_cwd_field $maxlen)%f %B%F{white}${sym}%f %b"
+  PROMPT="%U%F{240}$(_fixed_cwd_field $maxlen)%f%u %B%F{white}⟨${sym}%f %b"
   RPROMPT=
 }
