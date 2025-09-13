@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  filesLib    = import ../../lib/link-hm-files.nix { inherit lib config; };
+  filesLib    = import ../../../lib/link-hm-files.nix { inherit lib config; };
   repoRoot    = "${config.home.homeDirectory}/nixos";
   userRoot    = "${repoRoot}/${config.home.username}";
   worktreeAbs = "${userRoot}/modules/vscode/User";
