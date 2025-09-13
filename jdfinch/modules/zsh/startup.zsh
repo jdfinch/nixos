@@ -16,6 +16,7 @@ fi
 # Hook for after every cd
 autoload -Uz add-zsh-hook
 _chpwd_list() {
+  print -r -- "$PWD"
   if (( $+commands[eza] )); then
     eza --group-directories-first
   else
