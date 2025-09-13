@@ -20,9 +20,9 @@ _fixed_cwd_field() {
 
 precmd() {
   local maxlen=32
-  local sym="⮞"   # fancy prompt glyph; alternatives: ➜  ❱  ⮞
+  local sym="⟨⮞"   # fancy prompt glyph; alternatives: ➜  ❱  ⮞
 
   # dim/quiet cwd, then space + bold white symbol
-  PROMPT="%U%F{240}$(_fixed_cwd_field $maxlen)%f%u %B%F{white}⟨${sym}%f %b"
-  RPROMPT=
+  PROMPT="%F{240}%K{235}$(_fixed_cwd_field $maxlen)%f%k %B%F{white}${sym}%f%b "
+  RPROMPT=""
 }
