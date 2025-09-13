@@ -2,8 +2,11 @@
 { config, pkgs, ... }:
 
 let
-  userDir = ./User;                         
-  extList = import ./extensions.nix { inherit pkgs; }; 
+  repoRoot   = "${config.home.homeDirectory}/nixos";
+  userRoot   = "${repoRoot}/${config.home.username}";
+  userDirAbs = "${userRoot}/modules/vscode/User";
+
+  extList    = import ./extensions.nix { inherit pkgs; };
 in
 {
   programs.vscode = {
@@ -12,10 +15,9 @@ in
     profiles.default.extensions = extList;
   };
 
-  # Link into ~/.config/Code/User
   xdg.configFile."Code/User" = {
-    source = userDir;
+    source    = config.lib.file.mkOutOfStoreSymlink userDirAbs;
     recursive = true;
-    force = true;
+    force     = true;
   };
 }
