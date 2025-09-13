@@ -1,5 +1,40 @@
 {
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "terminal.integrated.enableMultiLinePasteWarning": "never"
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+
+    // Use nixd (rich option-aware autocomplete)
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+
+    // nixd configuration (sent via workspace/configuration)
+    "nix.serverSettings": {
+        "nixd": {
+        // Formatter nixd should call (array form per current docs)
+        "formatting": { "command": ["nixfmt"] },
+
+        // Where to find nixpkgs and options (use the opened workspace as the flake root)
+        "nixpkgs": {
+            "expr": "(builtins.getFlake \".\").inputs.nixpkgs"
+        },
+        "options": {
+            // NixOS options for completion like `programs.hyprland.enable`
+            "nixos": {
+            "expr": "(builtins.getFlake \".\").nixosConfigurations.raider.options"
+            }
+            // If you export homeConfigurations in your flake, you can also add:
+            // "home-manager": {
+            //   "expr": "(builtins.getFlake \".\").homeConfigurations.\"jdfinch@raider\".options"
+            // }
+        },
+
+        // Optional: quiet a few noisy rules
+        "diagnostic": { "suppress": ["sema-def-not-used"] }
+        }
+    },
+
+    // Make the VSCode extension format .nix with nixfmt (optional)
+    "[nix]": { "editor.defaultFormatter": "jnoortheen.nix-ide" }
+
 }
+

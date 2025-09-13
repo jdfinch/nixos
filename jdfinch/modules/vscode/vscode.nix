@@ -1,8 +1,9 @@
+# jdfinch/modules/vscode/vscode.nix
 { config, pkgs, ... }:
 
 let
-  vscodeDir = ../vscode;
-  extList   = import (vscodeDir + "/extensions.nix") { inherit pkgs; };
+  userDir = ./User;                         
+  extList = import ./extensions.nix { inherit pkgs; }; 
 in
 {
   programs.vscode = {
@@ -11,10 +12,10 @@ in
     profiles.default.extensions = extList;
   };
 
-  # Symlink the entire VSCode User directory from your repo
+  # Link into ~/.config/Code/User
   xdg.configFile."Code/User" = {
-    source = vscodeDir;
+    source = userDir;
     recursive = true;
+    force = true;
   };
-
 }
