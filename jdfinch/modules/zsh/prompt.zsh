@@ -1,22 +1,28 @@
-# Always render cwd as exactly (maxlen-2) chars, plus " >"
-_fixed_cwd_prompt() {
-  local maxlen=$1
-  local p=${PWD/#$HOME/~}
-  local promptlen=$((maxlen - 2))   # leave space for " >"
+# Fixed-width (32) prompt: quiet cwd, bold white symbol
+# - cwd is right-aligned within 30 cols (left-padded), left-truncated with "..."
+# - a single space + symbol make up the remaining 2 cols
+# - total width (cwd + space + symbol) = 32
+setopt PROMPT_SUBST
 
-  if (( ${#p} > promptlen )); then
-    # truncate from left
-    p="...${p: -$((promptlen - 3))}"
-  else
-    # pad with spaces on right
-    p="${p}$(printf '%*s' $((promptlen - ${#p})))"
+_fixed_cwd_field() {
+  local maxlen=${1:-32}
+  local field=$(( maxlen - 2 ))   # allow " <symbol>" at the end
+  local p=${PWD/#$HOME/~}
+
+  if (( ${#p} > field )); then
+    # left-truncate; keep last (field-3), prefix "..."
+    p="...${p: -$((field - 3))}"
   fi
 
-  print -r -- "$p"
+  # left-pad to width 'field' (right-align)
+  printf "%*s" "$field" "$p"
 }
 
 precmd() {
   local maxlen=32
-  PROMPT="%B%F{white}$(_fixed_cwd_prompt $maxlen)%f > %b"
+  local sym="⮞"   # fancy prompt glyph; alternatives: ➜  ❱  ⮞
+
+  # dim/quiet cwd, then space + bold white symbol
+  PROMPT="%F{240}$(_fixed_cwd_field $maxlen)%f %B%F{white}${sym}%f %b"
   RPROMPT=
 }
