@@ -24,7 +24,7 @@
         gaps_in = 6;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 65deg";
+        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 80deg";
         "col.inactive_border" = "rgba(1e1e2eee)";
       };
 
@@ -51,7 +51,6 @@
         "$mod, E, exec, wofi --show drun"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
-        "$mod, SHIFT, E, exit"
 
         # --- Volume control ---
         ",XF86AudioRaiseVolume, exec, pamixer -u -i 1"
