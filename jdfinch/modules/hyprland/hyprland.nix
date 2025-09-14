@@ -21,7 +21,7 @@
       };
 
       "exec-once" = [
-        "swww img ~/.wallpapers/flora.png --transition-type none"
+        "swww-daemon"
       ];
 
       general = {
