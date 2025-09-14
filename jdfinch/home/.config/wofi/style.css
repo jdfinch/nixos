@@ -1,0 +1,19 @@
+window {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+}
+
+#entry {
+    padding: 5px;
+}
+
+#entry:selected {
+    background-color: #313244;
+    color: #89b4fa;
+}
+
+#input {
+    margin: 5px;
+    background-color: #313244;
+    color: #cdd6f4;
+}
