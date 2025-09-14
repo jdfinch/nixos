@@ -7,4 +7,6 @@ with pkgs.vscode-extensions; [
   ms-python.debugpy
   ms-python.vscode-pylance
   ms-toolsai.jupyter
+  github.vscode-github-actions
+  github.vscode-pull-request-github
 ]
