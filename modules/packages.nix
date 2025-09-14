@@ -7,6 +7,7 @@
     nixd
     git
     zsh
+    home-manager
     pamixer
     brightnessctl
     wofi
