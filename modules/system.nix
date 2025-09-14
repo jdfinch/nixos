@@ -43,4 +43,9 @@
 
   # Direnv
   programs.direnv.enable = true;
+
+
+  environment.sessionVariables = {
+    UV_PYTHON_DOWNLOADS = "never";
+  };
 }
