@@ -12,7 +12,7 @@ let
     worktreeAbs = worktreeAbs;   # editable targets in your repo
   };
 
-  # List of extension IDs for `code --install-extension`
+  # Extension IDs to install with `code --install-extension`
   extIds = [
     "mkhl.direnv"
     "jnoortheen.nix-ide"
@@ -27,36 +27,32 @@ in
 {
   programs.vscode = {
     enable = true;
-    # Keep the dir writable; we'll install via CLI
     mutableExtensionsDir = true;
+    # Do NOT set profiles.default.extensions here; we’re managing via CLI.
   };
 
-  # Files-only links (your existing setup)
+  # Keep your user settings linking
   xdg.configFile = xdgLinks;
 
-  # Install/ensure extensions on each HM switch (idempotent)
+  # Install extensions on each HM switch (simple presence check)
   home.activation.vscodeExtensions = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    set -eu
-    ext_dir="$HOME/.vscode/extensions"
-    mkdir -p "$ext_dir"
+    set -euo pipefail
 
-    # Prefer code, fall back to codium if present
-    CODE_BIN="$(command -v code || true)"
-    if [ -z "$CODE_BIN" ]; then
-      CODE_BIN="$(command -v codium || true)"
-    fi
+    # Ensure the writable extensions dir exists
+    mkdir -p "$HOME/.vscode/extensions"
 
-    if [ -z "$CODE_BIN" ]; then
-      echo "[vscode] 'code' (or 'codium') not found in PATH; skipping extension install."
+    if ! command -v code >/dev/null 2>&1; then
+      echo "[vscode] 'code' not found in PATH; skipping extension install."
       exit 0
     fi
 
-    # Install any missing extensions
+    installed="$(code --list-extensions || true)"
+
     for ext in ${lib.concatStringsSep " " extIds}; do
-      if ! "$CODE_BIN" --list-extensions | grep -qi "^$ext$"; then
+      echo "$installed" | grep -qx "$ext" || {
         echo "[vscode] Installing $ext"
-        "$CODE_BIN" --install-extension "$ext" --force || true
-      fi
+        code --install-extension "$ext"
+      }
     done
   '';
 }
