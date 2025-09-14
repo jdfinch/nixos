@@ -55,7 +55,7 @@
 
         # --- Volume control ---
         ",XF86AudioRaiseVolume, exec, pamixer -u -i 1"
-        ",XF86AudioLowerVolume, exec, pamixer -d 1"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
       ];
     };
   };
