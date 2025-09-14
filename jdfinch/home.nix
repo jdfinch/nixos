@@ -12,7 +12,6 @@ let
       { source = src; force = true; };
 in
 {
-  programs.home-manager.enable = true;
 
   imports = [
     ./modules/zsh/zsh.nix
@@ -28,4 +27,6 @@ in
     # Link everything under ./home into $HOME (top-level items only)
     file = builtins.mapAttrs mkHomeFile entries;
   };
+
+  programs.home-manager.enable = true;
 }
