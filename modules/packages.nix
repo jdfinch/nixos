@@ -8,6 +8,7 @@
     git
     zsh
     pamixer
+    brightnessctl
     wofi
     keyd xorg.xkbcomp xkeyboard_config xorg.setxkbmap
 
