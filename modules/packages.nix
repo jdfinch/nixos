@@ -21,6 +21,9 @@
     ffmpeg
     gcc
     python313
+    python312
+    python311
+    python310
 
     # essential apps
     kitty
