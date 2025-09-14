@@ -54,8 +54,8 @@
         "$mod, SHIFT, E, exit"
 
         # --- Volume control ---
-        ",XF86AudioRaiseVolume, exec, pamixer -u -i 5"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioRaiseVolume, exec, pamixer -u -i 1"
+        ",XF86AudioLowerVolume, exec, pamixer -d 1"
       ];
     };
   };
