@@ -47,17 +47,22 @@
       "$mod" = "SUPER";
 
       bind = [
-        "$mod, Return, exec, foot"
+        "$mod, Return, exec, kitty"
         "$mod, E, exec, wofi --show drun"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
 
-        # --- Volume and Brightness control ---
-        "binde = ,XF86AudioRaiseVolume, exec, pamixer -u -i 3"
-        "binde = ,XF86AudioLowerVolume, exec, pamixer -d 5"
+        # --- Brightness control ---
         ",XF86MonBrightnessUp, exec, brightnessctl set +3%"
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
+
+      binde = [
+        # --- Volume control ---
+        "binde = ,XF86AudioRaiseVolume, exec, pamixer -u -i 3"
+        "binde = ,XF86AudioLowerVolume, exec, pamixer -d 5"
+      ];
+
     };
   };
 
