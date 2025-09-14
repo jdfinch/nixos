@@ -59,8 +59,8 @@
 
       binde = [
         # --- Volume control ---
-        "binde = ,XF86AudioRaiseVolume, exec, pamixer -u -i 3"
-        "binde = ,XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioRaiseVolume, exec, pamixer -u -i 3"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
       ];
 
     };
