@@ -34,7 +34,10 @@
     };
 
     homeConfigurations.jdfinch = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };  # <— add this
+      };
       modules = [ ./jdfinch/home.nix ];
     };
   };
