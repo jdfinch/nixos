@@ -2,16 +2,36 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    
+    # essential system
     nixd
-    foot 
-    waybar wofi 
-    firefox
-    python313 gcc 
-    ffmpeg
-    zsh git wget curl jq which zip unzip
-    tree
+    git
+    zsh
+    pamixer
+    wofi
     keyd xorg.xkbcomp xkeyboard_config xorg.setxkbmap
+
+    # essential utils
+    wget curl 
+    which 
+    zip unzip
+    tree
+    ffmpeg
+    gcc
+    python313
+
+    # essential apps
+    kitty
     vscode
+    firefox
+
+    # utils
+    direnv
+
+    # apps
+
+
+
   ];
   
 }

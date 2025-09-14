@@ -24,7 +24,7 @@
         gaps_in = 6;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 45deg";
+        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 65deg";
         "col.inactive_border" = "rgba(1e1e2eee)";
       };
 
@@ -52,6 +52,10 @@
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
         "$mod, SHIFT, E, exit"
+
+        # --- Volume control ---
+        ",XF86AudioRaiseVolume, exec, pamixer -u -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
       ];
     };
   };
