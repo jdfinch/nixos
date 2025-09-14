@@ -1,18 +1,15 @@
+# jdfinch/home.nix
 { config, pkgs, lib, ... }:
 
 let
-  homeDir = ./home;
-  entries = builtins.readDir homeDir;
+  # bring in the helper
+  recFilesOnlyXdg =
+    (import ../lib/link-hm-files.nix { inherit lib config; }).recFilesOnlyXdg;
 
-  mkHomeFile = name: typ:
-    let src = "${homeDir}/${name}";
-    in if typ == "directory" then
-      { source = src; recursive = true; force = true; }
-    else
-      { source = src; force = true; };
+  # assume repo lives at ~/nixos
+  repoRoot = "${config.home.homeDirectory}/nixos";
 in
 {
-
   imports = [
     ./modules/zsh/zsh.nix
     ./modules/vscode/vscode.nix
@@ -21,12 +18,17 @@ in
 
   home = {
     username = "jdfinch";
-    homeDirectory = "/home/jdfinch";
-    stateVersion = "25.05";
-
-    # Link everything under ./home into $HOME (top-level items only)
-    file = builtins.mapAttrs mkHomeFile entries;
+    homeDirectory = config.home.homeDirectory;
+    stateVersion = "24.11"; # stick to a released HM version
   };
+
+  # link every file under nixos/jdfinch/home into $HOME
+  xdg.configFile =
+    recFilesOnlyXdg {
+      srcRel      = ./home;                # the repo’s home subtree
+      destPrefix  = "";                    # empty → place relative to $HOME
+      worktreeAbs = "${repoRoot}/jdfinch/home";
+    };
 
   programs.home-manager.enable = true;
 }
