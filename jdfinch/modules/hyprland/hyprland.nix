@@ -24,7 +24,7 @@
         gaps_in = 6;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 30deg";
+        "col.active_border" = "rgba(89b4faee) rgba(f38ba8ee) 40deg";
         "col.inactive_border" = "rgba(1e1e2eee)";
       };
 
@@ -52,9 +52,9 @@
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
 
-        # --- Volume control ---
-        ",XF86AudioRaiseVolume, exec, pamixer -u -i 3"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        # --- Volume and Brightness control ---
+        "binde = ,XF86AudioRaiseVolume, exec, pamixer -u -i 3"
+        "binde = ,XF86AudioLowerVolume, exec, pamixer -d 5"
         ",XF86MonBrightnessUp, exec, brightnessctl set +3%"
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
