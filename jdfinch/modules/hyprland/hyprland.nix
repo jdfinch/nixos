@@ -30,7 +30,9 @@
 
       decoration = {
         rounding = 8;
-        blur = { enabled = true; size = 5; passes = 2; };
+        blur = { enabled = true; size = 5; passes = 2; new_optimizations=true; };
+        active_opacity = 0.95;
+        inactive_opacity = 0.7;
       };
 
       animations = {

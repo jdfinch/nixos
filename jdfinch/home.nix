@@ -14,6 +14,7 @@ in
     ./modules/zsh/zsh.nix
     ./modules/vscode/vscode.nix
     ./modules/hyprland/hyprland.nix
+    ./modules/gtk/gtk.nix
   ];
 
   home = {
