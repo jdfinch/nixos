@@ -7,9 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
   in {
     nixosConfigurations = {
       raider = nixpkgs.lib.nixosSystem {
@@ -17,20 +18,25 @@
         modules = [
           ./hosts/raider/configuration.nix
 
-          # 1) Flakes on
+          # Flakes on
           ({ ... }: { nix.settings.experimental-features = [ "nix-command" "flakes" ]; })
 
-          # 2) Home Manager on (for this system), and your user config
+          # Home Manager as a NixOS module
           home-manager.nixosModules.home-manager
           ({ ... }: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak-hm";
             home-manager.users.jdfinch = import ./jdfinch/home.nix;
-            
           })
         ];
       };
     };
+
+    homeManagerConfigurations.jdfinch = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ ./jdfinch/home.nix ];
+    };
   };
+
 }
