@@ -29,9 +29,9 @@
 
     # utils
     direnv
+    swww
 
     # apps
-
 
 
   ];

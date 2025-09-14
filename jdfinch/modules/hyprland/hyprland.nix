@@ -20,6 +20,11 @@
         };
       };
 
+      "exec-once" = [
+        "swww init"
+        "swww img ~/.wallpapers/flora.png"
+      ];
+
       general = {
         gaps_in = 6;
         gaps_out = 10;
