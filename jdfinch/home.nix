@@ -18,7 +18,7 @@ in
 
   home = {
     username = "jdfinch";
-    homeDirectory = config.home.homeDirectory;
+    homeDirectory =  "/home/${config.home.username}";
     stateVersion = "24.11"; # stick to a released HM version
   };
 
