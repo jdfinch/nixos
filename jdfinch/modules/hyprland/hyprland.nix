@@ -21,8 +21,7 @@
       };
 
       "exec-once" = [
-        "swww init"
-        "swww img ~/.wallpapers/flora.png"
+        "swww img ~/.wallpapers/flora.png --transition-type none"
       ];
 
       general = {
@@ -36,8 +35,8 @@
       decoration = {
         rounding = 8;
         blur = { enabled = true; size = 5; passes = 2; new_optimizations=true; };
-        active_opacity = 0.95;
-        inactive_opacity = 0.7;
+        active_opacity = 0.9;
+        inactive_opacity = 0.8;
       };
 
       animations = {
