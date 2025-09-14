@@ -30,6 +30,8 @@
     # utils
     direnv
     swww
+    uv
+    conda
 
     # apps
 
