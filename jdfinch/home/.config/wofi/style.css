@@ -1,19 +1,42 @@
+/* Wofi style.css — VS Code Dark / TUI-like */
+
 window {
-    background-color: #1e1e2e;
-    color: #cdd6f4;
-}
-
-#entry {
-    padding: 5px;
-}
-
-#entry:selected {
-    background-color: #313244;
-    color: #89b4fa;
+    /* Dark background, like VS Code editor */
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: monospace;
+    font-size: 13pt;
 }
 
 #input {
-    margin: 5px;
-    background-color: #313244;
-    color: #cdd6f4;
+    margin: 6px;
+    padding: 4px 6px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background-color: #252526;
+    color: #d4d4d4;
+}
+
+#entry {
+    padding: 4px 8px;
+    border: none;
+    background-color: transparent;
+    color: #d4d4d4;
+}
+
+#entry:selected {
+    /* Accent blue, like VS Code activity bar highlights */
+    background-color: #264f78;
+    color: #ffffff;
+}
+
+#scroll {
+    margin: 4px;
+}
+
+#outer-box {
+    padding: 8px;
+    background-color: #1e1e1e;
+    border: 1px solid #3c3c3c;
+    border-radius: 6px;
 }
