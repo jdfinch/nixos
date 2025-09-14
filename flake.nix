@@ -33,7 +33,7 @@
       };
     };
 
-    homeManagerConfigurations.jdfinch = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.jdfinch = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [ ./jdfinch/home.nix ];
     };
