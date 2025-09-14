@@ -7,12 +7,11 @@ let
   worktreeAbs = "${userRoot}/modules/vscode/User";
 
   xdgLinks = filesLib.recFilesOnlyXdg {
-    srcRel      = ./User;        # enumerate from flake source (pure)
+    srcRel      = ./User;
     destPrefix  = "Code/User";   # → ~/.config/Code/User/*
-    worktreeAbs = worktreeAbs;   # editable targets in your repo
+    worktreeAbs = worktreeAbs;
   };
 
-  # Extension IDs to install with `code --install-extension`
   extIds = [
     "mkhl.direnv"
     "jnoortheen.nix-ide"
@@ -28,31 +27,33 @@ in
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = true;
-    # Do NOT set profiles.default.extensions here; we’re managing via CLI.
+    # do not set profiles.default.extensions here; we install via CLI
   };
 
-  # Keep your user settings linking
   xdg.configFile = xdgLinks;
 
-  # Install extensions on each HM switch (simple presence check)
   home.activation.vscodeExtensions = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     set -euo pipefail
 
-    # Ensure the writable extensions dir exists
+    # Use the Nix store path so PATH doesn't matter during activation
+    codeBin="${pkgs.vscode}/bin/code"
+
+    # Ensure writable extensions dir
     mkdir -p "$HOME/.vscode/extensions"
 
-    if ! command -v code >/dev/null 2>&1; then
-      echo "[vscode] 'code' not found in PATH; skipping extension install."
+    # If VS Code isn't available, skip gracefully
+    if [ ! -x "$codeBin" ]; then
+      echo "[vscode] ${pkgs.vscode}/bin/code not found; skipping extension install."
       exit 0
     fi
 
-    installed="$(code --list-extensions || true)"
+    installed="$("$codeBin" --list-extensions || true)"
 
     for ext in ${lib.concatStringsSep " " extIds}; do
-      echo "$installed" | grep -qx "$ext" || {
+      if ! echo "$installed" | grep -qx "$ext"; then
         echo "[vscode] Installing $ext"
-        code --install-extension "$ext"
-      }
+        "$codeBin" --install-extension "$ext"
+      fi
     done
   '';
 }
