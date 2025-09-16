@@ -15,7 +15,7 @@
       input = {
         follow_mouse = 1;
         touchpad = {
-          natural_scroll = false;
+          natural_scroll = true;
           "tap-to-click" = true;
         };
       };

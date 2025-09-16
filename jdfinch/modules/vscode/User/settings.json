@@ -34,7 +34,10 @@
     },
 
     // Make the VSCode extension format .nix with nixfmt
-    "[nix]": { "editor.defaultFormatter": "jnoortheen.nix-ide" }
+    "[nix]": {
+        "editor.defaultFormatter": "jnoortheen.nix-ide"
+    },
+    "python.defaultInterpreterPath": "/run/current-system/sw/bin/python"
 
 }
 
