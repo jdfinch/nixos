@@ -3,6 +3,8 @@
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.enableMultiLinePasteWarning": "never",
 
+    "update.mode": "none",
+
     // Use nixd (rich option-aware autocomplete)
     "nix.enableLanguageServer": true,
     "nix.serverPath": "nixd",
