@@ -17,17 +17,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.plymouth.enable = true;            # splash; disable if you want pure black
-
   # Quieter kernel + systemd
-  boot.consoleLogLevel = 3;
-  boot.kernelParams = [
-    "quiet"
-    "loglevel=3"
-    "udev.log_priority=3"
-    "vt.global_cursor_default=0"  # hide blinking TTY cursor
-    "systemd.show_status=false"   # replaces old systemd.showStatus
-  ];
+  # boot.consoleLogLevel = 3;
+  # boot.kernelParams = [
+  #   "quiet"
+  #   "loglevel=3"
+  #   "udev.log_priority=3"
+  #   "vt.global_cursor_default=0"  # hide blinking TTY cursor
+  #   "systemd.show_status=false"   # replaces old systemd.showStatus
+  # ];
 
   boot.initrd.verbose = false;
   boot.loader.systemd-boot.consoleMode = "auto";
