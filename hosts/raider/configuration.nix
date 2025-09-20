@@ -15,32 +15,7 @@
   networking.hostName = "raider";
 
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-
-  # Quiet splashy boot
-  boot.plymouth.enable = true;   # shows splash; press Esc for logs if you want
-
-  # Kernel + systemd (real userspace) quieting
-  boot.consoleLogLevel = 1;      # stricter than 3 (almost nothing)
-  boot.kernelParams = [
-    "quiet"
-    "loglevel=1"
-    "udev.log_priority=3"
-    "systemd.show_status=false"
-    # Send console messages to a non-visible VT so tty1 stays clean
-    "console=tty12"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_priority=3"
-  ];
-
-  # Initrd quieting (systemd-in-initrd & udev there)
-  boot.initrd.verbose = false;
-
-  # Optional but often nicer handoff
-  boot.loader.systemd-boot.consoleMode = "auto";
-
-  
+  boot.loader.efi.canTouchEfiVariables = true;  
 
   system.stateVersion = "25.05";
 
