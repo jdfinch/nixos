@@ -48,9 +48,18 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      # Let Hyprland discover ~/.config/hypr/hyprland.conf from HM
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting 'Hello, world.' --cmd ${pkgs.hyprland}/bin/hyprland";
-      user = "greeter";
+      enable = true;
+      tty = 1;  # stick to tty1 to avoid flicker
+      settings = {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/hyprland";
+          user = "jdfinch";
+        };
+      };  
+
+      # For manual login:
+      # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting 'Hello, world.' --cmd ${pkgs.hyprland}/bin/hyprland";
+      # user = "greeter";
     };
   };
 
