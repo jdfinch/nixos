@@ -27,8 +27,8 @@
   #   "systemd.show_status=false"   # replaces old systemd.showStatus
   # ];
 
-  boot.initrd.verbose = false;
-  boot.loader.systemd-boot.consoleMode = "auto";
+  # boot.initrd.verbose = false;
+  # boot.loader.systemd-boot.consoleMode = "auto";
   
 
   system.stateVersion = "25.05";

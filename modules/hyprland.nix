@@ -48,14 +48,12 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
+
+      # Quiet login
       enable = true;
       tty = 1;  # stick to tty1 to avoid flicker
-      settings = {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/hyprland";
-          user = "jdfinch";
-        };
-      };  
+      command = "${pkgs.hyprland}/bin/hyprland";
+      user = "jdfinch";
 
       # For manual login:
       # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting 'Hello, world.' --cmd ${pkgs.hyprland}/bin/hyprland";
