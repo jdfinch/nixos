@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ComfyUI
+Comment=Launch ComfyUI
+Exec=kitty -e zsh -lc "direnv exec ~/ComfyUI python ~/ComfyUI/main.py"
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Utility;
