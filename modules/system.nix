@@ -37,6 +37,9 @@
 
   # Shell
   programs.zsh.enable = true;
+  
+  # Linker
+  programs.nix-ld.enable = true;
 
   # Firewall
   networking.firewall.enable = true;
