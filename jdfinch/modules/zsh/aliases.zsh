@@ -9,3 +9,6 @@ git-commit() {
   git status
   git commit -m "$1"
 }
+
+pip()  { uv pip "$@"; }
+pip3() { uv pip "$@"; }

@@ -39,7 +39,8 @@
     "[nix]": {
         "editor.defaultFormatter": "jnoortheen.nix-ide"
     },
-    "python.defaultInterpreterPath": "/run/current-system/sw/bin/python"
+    "python.defaultInterpreterPath": "/run/current-system/sw/bin/python",
+    "editor.minimap.enabled": false
 
 }
 
