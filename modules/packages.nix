@@ -8,6 +8,7 @@
     git
     zsh
     home-manager
+    alsa-utils
     pamixer
     brightnessctl
     wofi
