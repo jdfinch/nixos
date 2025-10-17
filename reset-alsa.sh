@@ -86,10 +86,10 @@ fi
 
 banner "Reloading user audio stack"
 # Start user services back up (PipeWire preferred on modern NixOS)
-su - "$REAL_USER" -c 'systemctl --user daemon-reload || true'
-su - "$REAL_USER" -c 'systemctl --user start pipewire.socket pipewire-pulse.socket wireplumber.service 2>/dev/null || true'
-# If still on PulseAudio without PipeWire, try starting it
-su - "$REAL_USER" -c 'systemctl --user start pulseaudio.socket pulseaudio.service 2>/dev/null || true'
+systemctl --machine=jdfinch@.host --user daemon-reload
+systemctl --machine=jdfinch@.host --user start pipewire.socket pipewire-pulse.socket wireplumber.service
+# If you’re on PulseAudio instead of PipeWire:
+systemctl --machine=jdfinch@.host --user start pulseaudio.socket pulseaudio.service
 
 banner "Done"
 echo "• User configs backed up in: $backup_dir"

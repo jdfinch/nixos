@@ -9,6 +9,10 @@
     zsh
     home-manager
     alsa-utils
+    pipewire
+    wireplumber
+    pulseaudio
+    pavucontrol
     pamixer
     brightnessctl
     wofi
