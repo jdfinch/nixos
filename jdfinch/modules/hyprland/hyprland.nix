@@ -130,10 +130,10 @@
         "$mod,C,centerwindow"
 
         # Super+Ctrl+Arrow to resize stepwise
-        "$mod ALT, UP,    resizeactive, 0 -20"   # shrink vertically
-        "$mod ALT, DOWN,  resizeactive, 0 20"    # grow vertically
-        "$mod ALT, LEFT,  resizeactive, -20 0"   # shrink horizontally
-        "$mod ALT, RIGHT, resizeactive, 20 0"    # grow horizontally
+        "$mod ALT, UP,    resizeactive, 0 -100"   # shrink vertically
+        "$mod ALT, DOWN,  resizeactive, 0 100"    # grow vertically
+        "$mod ALT, LEFT,  resizeactive, -100 0"   # shrink horizontally
+        "$mod ALT, RIGHT, resizeactive, 100 0"    # grow horizontally
       ];
 
       # Mouse helpers for floating (Super + Left drag = move, Right drag = resize)
