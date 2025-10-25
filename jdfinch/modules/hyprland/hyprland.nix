@@ -88,6 +88,11 @@
         "$mod,LEFT,workspace,-1"
         "$mod,RIGHT,workspace,+1"
 
+        # Move focused window to previous/next workspace AND follow
+        "$mod CTRL, LEFT,  exec, hyprctl dispatch movetoworkspace r-1; hyprctl dispatch workspace -1"
+        "$mod CTRL, RIGHT, exec, hyprctl dispatch movetoworkspace r+1; hyprctl dispatch workspace +1"
+
+
         # Send active window to workspace (silent = don't follow)
         "$mod SHIFT,1,movetoworkspacesilent,1"
         "$mod SHIFT,2,movetoworkspacesilent,2"
@@ -118,12 +123,8 @@
         "$mod CTRL,N,exec,hyprctl dispatch movetoworkspace empty; hyprctl dispatch workspace empty"
 
         # Monitors (screens): focus & move window
-        "$mod SHIFT,bracketleft,movewindow,mon:prev"
-        "$mod SHIFT,bracketright,movewindow,mon:next"
-
-        # Optional: move the current workspace to another monitor
-        "$mod CTRL,LEFT,movecurrentworkspacetomonitor,prev"
-        "$mod CTRL,RIGHT,movecurrentworkspacetomonitor,next"
+        "$mod SHIFT,LEFT,movewindow,mon:prev"
+        "$mod SHIFT,RIGHT,movewindow,mon:next"
 
         # Floating: toggle & center (Super+T to avoid fullscreen clash)
         "$mod,T,togglefloating"
