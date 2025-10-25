@@ -9,9 +9,13 @@
     zsh
     home-manager
     alsa-utils
+    alsa-ucm-conf
+    alsa-firmware
+    alsa-tools
     pipewire
     wireplumber
     pulseaudio
+    psmisc
     pavucontrol
     pamixer
     brightnessctl

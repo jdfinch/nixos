@@ -17,6 +17,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;  
 
+  hardware.enableRedistributableFirmware = true;
+
   system.stateVersion = "25.05";
 
   home-manager.users.jdfinch = import ../../jdfinch/home.nix;
