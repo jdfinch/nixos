@@ -40,7 +40,8 @@
         "editor.defaultFormatter": "jnoortheen.nix-ide"
     },
     "python.defaultInterpreterPath": "/run/current-system/sw/bin/python",
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "editor.defaultFormatter": "ms-python.black-formatter"
 
 }
 

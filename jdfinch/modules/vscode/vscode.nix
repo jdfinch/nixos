@@ -21,6 +21,7 @@ let
     "ms-toolsai.jupyter"
     "github.vscode-github-actions"
     "github.vscode-pull-request-github"
+    "ms-python.black-formatter"
   ];
 in
 {
