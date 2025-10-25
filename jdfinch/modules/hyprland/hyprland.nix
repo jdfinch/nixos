@@ -89,8 +89,8 @@
         "$mod,RIGHT,workspace,+1"
 
         # Move focused window to previous/next workspace AND follow
-        "$mod CTRL, LEFT,  exec, hyprctl dispatch movetoworkspace r-1; hyprctl dispatch workspace -1"
-        "$mod CTRL, RIGHT, exec, hyprctl dispatch movetoworkspace r+1; hyprctl dispatch workspace +1"
+        "$mod CTRL, LEFT,  exec, hyprctl dispatch movetoworkspace r-1"
+        "$mod CTRL, RIGHT, exec, hyprctl dispatch movetoworkspace r+1"
 
 
         # Send active window to workspace (silent = don't follow)
