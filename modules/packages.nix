@@ -46,7 +46,7 @@
     conda
 
     # apps
-
+    gimp3-with-plugins
 
   ];
   
