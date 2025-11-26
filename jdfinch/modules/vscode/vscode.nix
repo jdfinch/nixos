@@ -22,6 +22,7 @@ let
     "github.vscode-github-actions"
     "github.vscode-pull-request-github"
     "ms-python.black-formatter"
+    "imfeniljikadara.figure"
   ];
 in
 {
