@@ -43,7 +43,11 @@
     "editor.minimap.enabled": false,
     "editor.defaultFormatter": "ms-python.black-formatter",
     "explorer.confirmPasteNative": false,
-    "window.restoreWindows": "none"
+    "window.restoreWindows": "none",
+    "excalidraw.theme": "auto",
+    "window.customTitleBarVisibility": "never",
+    "zenMode.showTabs": "none",
+    "workbench.editor.showTabs": "none"
 
 }
 
