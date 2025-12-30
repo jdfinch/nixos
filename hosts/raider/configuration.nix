@@ -19,6 +19,8 @@
 
   hardware.enableRedistributableFirmware = true;
 
+  services.hardware.bolt.enable = true;
+
   system.stateVersion = "25.05";
 
   home-manager.users.jdfinch = import ../../jdfinch/home.nix;

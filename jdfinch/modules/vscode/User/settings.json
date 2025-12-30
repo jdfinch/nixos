@@ -47,7 +47,8 @@
     "excalidraw.theme": "auto",
     "window.customTitleBarVisibility": "never",
     "zenMode.showTabs": "none",
-    "workbench.editor.showTabs": "none"
+    "workbench.editor.showTabs": "none",
+    "git.openRepositoryInParentFolders": "never"
 
 }
 

@@ -19,6 +19,7 @@
     pavucontrol
     pamixer
     brightnessctl
+    bolt
     wofi
     keyd xorg.xkbcomp xkeyboard_config xorg.setxkbmap
 
