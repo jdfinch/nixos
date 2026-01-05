@@ -34,6 +34,7 @@
     python312
     python311
     python310
+    git-lfs
 
     # essential apps
     kitty
