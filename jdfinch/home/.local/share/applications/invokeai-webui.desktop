@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=InvokeAI Web UI
+Comment=Run InvokeAI Web UI (uv + nix develop)
+Terminal=false
+Categories=Graphics;AI;
+StartupNotify=true
+WorkingDirectory=/home/jdfinch/invokeai
+Exec=kitty --detach --start-as=hidden -- /run/current-system/sw/bin/zsh -lc 'cd /home/jdfinch/invokeai && nix develop -c /run/current-system/sw/bin/zsh -lc "source .venv/bin/activate && exec invokeai-web --root /home/jdfinch/invokeai"'
