@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Godot Engine 4.4
+GenericName=Libre game engine
+Comment=Launch Godot with Home Manager-managed config and projects in ~/Godot
+Exec=/home/jdfinch/.local/bin/godot-hm %f
+Path=/home/jdfinch/Godot
+Icon=godot
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+MimeType=application/x-godot-project;
+Categories=Development;IDE;
+StartupWMClass=Godot

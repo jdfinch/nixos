@@ -15,6 +15,7 @@ in
     ./modules/vscode/vscode.nix
     ./modules/hyprland/hyprland.nix
     ./modules/gtk/gtk.nix
+    ./modules/godot/godot.nix
   ];
 
   home = {

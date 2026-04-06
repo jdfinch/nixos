@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+HOME_DIR="${HOME}"
+PROJECTS_DIR="${HOME_DIR}/Godot"
+REPO_HOME="${HOME_DIR}/nixos/jdfinch/home"
+
+mkdir -p "${PROJECTS_DIR}"
+mkdir -p "${REPO_HOME}/.config/godot"
+
+export XDG_CONFIG_HOME="${REPO_HOME}/.config"
+
+cd "${PROJECTS_DIR}"
+exec /run/current-system/sw/bin/godot "$@"

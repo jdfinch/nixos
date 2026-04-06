@@ -49,6 +49,7 @@
 
     # apps
     gimp3-with-plugins
+    godot_4
 
   ];
   
