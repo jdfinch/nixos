@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COMFY_DIR="${HOME}/ComfyUI"
+
+cd "${COMFY_DIR}"
+exec /run/current-system/sw/bin/nix develop "${COMFY_DIR}" -c zsh -lc 'source venv/bin/activate && exec python main.py'
