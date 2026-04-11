@@ -32,5 +32,17 @@ in
       worktreeAbs = "${repoRoot}/jdfinch/home";
     };
 
+  home.activation.comfyuiSetup = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    mkdir -p "${config.home.homeDirectory}/.local/bin"
+    mkdir -p "${config.home.homeDirectory}/.local/share/applications"
+
+    ln -sfn \
+      "${repoRoot}/jdfinch/home/.local/bin/comfyui-hm" \
+      "${config.home.homeDirectory}/.local/bin/comfyui-hm"
+    ln -sfn \
+      "${repoRoot}/jdfinch/home/.local/share/applications/comfyui.desktop" \
+      "${config.home.homeDirectory}/.local/share/applications/comfyui.desktop"
+  '';
+
   programs.home-manager.enable = true;
 }

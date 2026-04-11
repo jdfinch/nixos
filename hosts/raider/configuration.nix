@@ -17,6 +17,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;  
 
+  # SSD-backed swapfile on the root NVMe filesystem.
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
   hardware.enableRedistributableFirmware = true;
 
   services.hardware.bolt.enable = true;

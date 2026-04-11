@@ -1,7 +1,19 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 set -euo pipefail
 
 COMFY_DIR="${HOME}/ComfyUI"
+TRITON_LIBCUDA_DIR="${HOME}/.cache/triton-libcuda"
+PY_INCLUDE="$("${COMFY_DIR}/venv/bin/python" - <<'PY'
+import sysconfig
+print(sysconfig.get_config_var("INCLUDEPY"))
+PY
+)"
+
+mkdir -p "${TRITON_LIBCUDA_DIR}"
+ln -sfn /run/opengl-driver/lib/libcuda.so.1 "${TRITON_LIBCUDA_DIR}/libcuda.so.1"
+ln -sfn /run/opengl-driver/lib/libcuda.so.1 "${TRITON_LIBCUDA_DIR}/libcuda.so"
 
 cd "${COMFY_DIR}"
-exec /run/current-system/sw/bin/nix develop "${COMFY_DIR}" -c zsh -lc 'source venv/bin/activate && exec python main.py'
+export CPATH="${PY_INCLUDE}${CPATH:+:${CPATH}}"
+
+exec /run/current-system/sw/bin/nix develop "${COMFY_DIR}" -c "${COMFY_DIR}/venv/bin/python" "${COMFY_DIR}/main.py" --enable-manager "$@"

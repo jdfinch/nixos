@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ComfyUI
-Comment=Launch ComfyUI
+Comment=Launch ComfyUI via the Home Manager wrapper
 Exec=kitty -e /home/jdfinch/.local/bin/comfyui-hm
 Icon=utilities-terminal
 Terminal=false
