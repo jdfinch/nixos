@@ -1,0 +1,46 @@
+#!/run/current-system/sw/bin/bash
+set -euo pipefail
+
+WANGP_DIR="${HOME}/Wan2GP"
+WANGP_PYTHON="${WANGP_DIR}/.venv/bin/python"
+NIX_BIN="/run/current-system/sw/bin/nix"
+
+source_nounset_safe() {
+  local file="$1"
+  if [ ! -f "$file" ]; then
+    return 0
+  fi
+  set +u
+  # shellcheck disable=SC1090
+  . "$file"
+  set -u
+}
+
+if [ -z "${__NIXOS_SET_ENVIRONMENT_DONE:-}" ]; then
+  source_nounset_safe /etc/set-environment
+fi
+
+if [ -z "${__HM_SESS_VARS_SOURCED:-}" ]; then
+  source_nounset_safe "/etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh"
+fi
+
+if [ ! -f "${WANGP_DIR}/flake.nix" ] || [ ! -f "${WANGP_DIR}/wgp.py" ]; then
+  echo "Wan2GP repo is missing or incomplete at ${WANGP_DIR}" >&2
+  exit 1
+fi
+
+if [ ! -x "${WANGP_PYTHON}" ]; then
+  echo "Wan2GP virtualenv is missing at ${WANGP_PYTHON}" >&2
+  echo "Create it first from ${WANGP_DIR}." >&2
+  exit 1
+fi
+
+cd "${WANGP_DIR}"
+export PATH="/run/wrappers/bin:/run/current-system/sw/bin:${PATH}"
+unset PYTHONPATH
+unset _PYTHON_SYSCONFIGDATA_NAME
+unset _PYTHON_HOST_PLATFORM
+unset PYTHONNOUSERSITE
+
+echo "Launching Wan2GP from ${WANGP_DIR}"
+exec "${NIX_BIN}" develop . -c "${WANGP_PYTHON}" "${WANGP_DIR}/wgp.py" "$@"

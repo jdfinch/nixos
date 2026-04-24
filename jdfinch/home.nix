@@ -32,7 +32,7 @@ in
       worktreeAbs = "${repoRoot}/jdfinch/home";
     };
 
-  home.activation.comfyuiSetup = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+  home.activation.appLaunchersSetup = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     mkdir -p "${config.home.homeDirectory}/.local/bin"
     mkdir -p "${config.home.homeDirectory}/.local/share/applications"
 
@@ -40,8 +40,14 @@ in
       "${repoRoot}/jdfinch/home/.local/bin/comfyui-hm" \
       "${config.home.homeDirectory}/.local/bin/comfyui-hm"
     ln -sfn \
+      "${repoRoot}/jdfinch/home/.local/bin/wan2gp-hm" \
+      "${config.home.homeDirectory}/.local/bin/wan2gp-hm"
+    ln -sfn \
       "${repoRoot}/jdfinch/home/.local/share/applications/comfyui.desktop" \
       "${config.home.homeDirectory}/.local/share/applications/comfyui.desktop"
+    ln -sfn \
+      "${repoRoot}/jdfinch/home/.local/share/applications/wan2gp.desktop" \
+      "${config.home.homeDirectory}/.local/share/applications/wan2gp.desktop"
   '';
 
   programs.home-manager.enable = true;

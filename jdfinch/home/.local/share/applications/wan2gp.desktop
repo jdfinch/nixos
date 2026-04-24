@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Wan2GP
+Comment=Launch Wan2GP in a held terminal
+Exec=/run/current-system/sw/bin/kitty --hold -e /home/jdfinch/.local/bin/wan2gp-hm
+Path=/home/jdfinch/Wan2GP
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Graphics;AI;
+StartupNotify=true
