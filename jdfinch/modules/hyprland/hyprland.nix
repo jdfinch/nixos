@@ -1,5 +1,10 @@
 # jdfinch/modules/hyprland.nix
 { config, pkgs, ... }:
+
+let
+  tabletName = "ugtablet-tablet-g3-4x3";
+  tabletOutput = "HDMI-A-1"; # Swap to "eDP-1" to map the tablet to the laptop panel.
+in
 {
   # Hyprland per-user config
   wayland.windowManager.hyprland = {
@@ -11,6 +16,13 @@
 
     settings = {
       monitor = [ ",preferred,auto,1" ];
+
+      device = [
+        {
+          name = tabletName;
+          output = tabletOutput;
+        }
+      ];
 
       input = {
         follow_mouse = 1;
@@ -63,6 +75,7 @@
         "$mod, E, exec, wofi --show drun"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
+        ", Print, exec, mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
 
         # --- Brightness control ---
         ",XF86MonBrightnessUp, exec, brightnessctl set +3%"
