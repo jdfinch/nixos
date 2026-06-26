@@ -9,17 +9,12 @@
     zsh
     home-manager
     alsa-utils
-    alsa-ucm-conf
-    alsa-firmware
-    alsa-tools
-    pipewire
-    wireplumber
-    pulseaudio
     psmisc
     pavucontrol
-    pamixer
     brightnessctl
     grim
+    slurp
+    wl-clipboard
     bolt
     wofi
     keyd xorg.xkbcomp xkeyboard_config xorg.setxkbmap

@@ -75,7 +75,8 @@ in
         "$mod, E, exec, wofi --show drun"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
-        ", Print, exec, mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
+        ", Print, exec, grim - | wl-copy -t image/png"
+        "CTRL, Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
 
         # --- Brightness control ---
         ",XF86MonBrightnessUp, exec, brightnessctl set +3%"
@@ -158,8 +159,9 @@ in
 
       binde = [
         # --- Volume control ---
-        ",XF86AudioRaiseVolume, exec, pamixer -u -i 3"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 3%+"
+        ",XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
     };
   };
