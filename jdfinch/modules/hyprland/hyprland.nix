@@ -4,6 +4,47 @@
 let
   tabletName = "ugtablet-tablet-g3-4x3";
   tabletOutput = "HDMI-A-1"; # Swap to "eDP-1" to map the tablet to the laptop panel.
+  audioSink = pkgs.writeShellScript "raider-audio-sink" ''
+    set -eu
+
+    internal="alsa_output.pci-0000_00_1f.3.analog-stereo"
+    hdmi="alsa_output.pci-0000_01_00.1.hdmi-stereo"
+
+    find_id() {
+      ${pkgs.pipewire}/bin/pw-dump Node \
+        | ${pkgs.jq}/bin/jq -r --arg name "$1" '
+            .[]
+            | select(.info.props."media.class" == "Audio/Sink")
+            | select(.info.props."node.name" == $name)
+            | .info.props."object.id"
+          ' \
+        | ${pkgs.coreutils}/bin/head -n 1
+    }
+
+    current="$(
+      ${pkgs.wireplumber}/bin/wpctl inspect @DEFAULT_AUDIO_SINK@ \
+        | ${pkgs.gnused}/bin/sed -n 's/^.*node.name = "\([^"]*\)".*$/\1/p' \
+        | ${pkgs.coreutils}/bin/head -n 1
+    )"
+
+    if [ "''${1:-toggle}" = "internal" ]; then
+      target="$internal"
+    elif [ "$current" = "$hdmi" ]; then
+      target="$internal"
+    else
+      target="$hdmi"
+    fi
+
+    target_id="$(find_id "$target")"
+    if [ -z "$target_id" ] && [ "$target" = "$hdmi" ]; then
+      target="$internal"
+      target_id="$(find_id "$target")"
+    fi
+
+    if [ -n "$target_id" ]; then
+      ${pkgs.wireplumber}/bin/wpctl set-default "$target_id"
+    fi
+  '';
 in
 {
   # Hyprland per-user config
@@ -40,6 +81,7 @@ in
 
       "exec-once" = [
         "swww-daemon"
+        "sleep 3; ${audioSink} internal"
       ];
 
       general = {
@@ -143,6 +185,7 @@ in
         # Floating: toggle & center (Super+T to avoid fullscreen clash)
         "$mod,T,togglefloating"
         "$mod,C,centerwindow"
+        "$mod,A,exec,${audioSink} toggle"
 
         # Super+Ctrl+Arrow to resize stepwise
         "$mod ALT, UP,    resizeactive, 0 -100"   # shrink vertically

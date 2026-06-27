@@ -23,7 +23,35 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig."51-raider-audio-priority" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+              }
+            ];
+            actions.update-props = {
+              "priority.session" = 2000;
+              "priority.driver" = 2000;
+            };
+          }
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_01_00.1.hdmi-stereo";
+              }
+            ];
+            actions.update-props = {
+              "priority.session" = 100;
+              "priority.driver" = 100;
+            };
+          }
+        ];
+      };
+    };
   };
 
   boot.extraModprobeConfig = ''
