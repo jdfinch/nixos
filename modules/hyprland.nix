@@ -23,8 +23,46 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig."51-internal-audio-raw" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "device.name" = "alsa_card.pci-0000_00_1f.3-platform-skl_hda_dsp_generic";
+              }
+            ];
+            actions.update-props = {
+              "api.alsa.use-acp" = false;
+              "audio.channels" = 2;
+            };
+          }
+          {
+            matches = [
+              {
+                "node.name" = "~alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.playback.[345].0";
+              }
+              {
+                "node.name" = "alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.playback.31.0";
+              }
+            ];
+            actions.update-props = {
+              "node.disabled" = true;
+            };
+          }
+        ];
+      };
+    };
   };
+
+  boot.extraModprobeConfig = ''
+    # The MSI Raider GE77HX exposes its ALC274 speaker path through SOF, but
+    # the built-in speaker amp stays silent even when ALSA reaches hw:1,0.
+    # Prefer the legacy HDA path for this controller; HDMI still has its own
+    # NVIDIA HDA device, and the headphone jack is handled by the Realtek codec.
+    options snd-intel-dspcfg dsp_driver=1
+  '';
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
